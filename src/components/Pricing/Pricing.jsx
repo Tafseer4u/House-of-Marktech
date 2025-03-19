@@ -62,7 +62,7 @@ const Pricing = () => {
 
         <PricingContainer>
           {pricingPlans.map((plan) => (
-            <PricingCard key={plan.id} popular={plan.isPopular}>
+            <PricingCard key={plan.id} $popular={plan.isPopular}>
               {plan.isPopular && <PopularBadge>Most Popular</PopularBadge>}
               <PlanName>{plan.name}</PlanName>
               <PlanPrice>
@@ -75,7 +75,7 @@ const Pricing = () => {
                   <li key={index}>{feature}</li>
                 ))}
               </PlanFeatures>
-              <ChoosePlanButton popular={plan.isPopular}>
+              <ChoosePlanButton $popular={plan.isPopular}>
                 Choose Plan
               </ChoosePlanButton>
             </PricingCard>
@@ -138,25 +138,26 @@ const PricingCard = styled.div`
   text-align: center;
   position: relative;
   transition: var(--transition);
-  border: 2px solid ${(props) => (props.popular ? 'var(--primary-color)' : 'var(--gray-color)')};
-  transform: ${(props) => (props.popular ? 'scale(1.05)' : 'scale(1)')};
-  z-index: ${(props) => (props.popular ? '1' : '0')};
-  
+  border: 2px solid
+    ${(props) =>
+      props.$popular ? "var(--primary-color)" : "var(--gray-color)"};
+  transform: ${(props) => (props.$popular ? "scale(1.05)" : "scale(1)")};
+  z-index: ${(props) => (props.$popular ? "1" : "0")};
+
   &:hover {
-    transform: ${(props) => (props.popular ? 'scale(1.08)' : 'scale(1.03)')};
+    transform: ${(props) => (props.$popular ? "scale(1.08)" : "scale(1.03)")};
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   }
-  
+
   @media (max-width: 991px) {
     transform: scale(1);
-    margin-bottom: ${(props) => (props.popular ? '2rem' : '0')};
-    
+    margin-bottom: ${(props) => (props.$popular ? "2rem" : "0")};
+
     &:hover {
       transform: translateY(-10px);
     }
   }
 `;
-
 const PopularBadge = styled.span`
   position: absolute;
   top: -15px;
@@ -210,8 +211,9 @@ const PlanFeatures = styled.ul`
 `;
 
 const ChoosePlanButton = styled.button`
-  background-color: ${(props) => (props.popular ? 'var(--primary-color)' : 'transparent')};
-  color: ${(props) => (props.popular ? 'white' : 'var(--primary-color)')};
+  background-color: ${(props) =>
+    props.$popular ? "var(--primary-color)" : "transparent"};
+  color: ${(props) => (props.$popular ? "white" : "var(--primary-color)")};
   border: 2px solid var(--primary-color);
   padding: 0.8rem 2rem;
   font-size: 1rem;
@@ -221,7 +223,7 @@ const ChoosePlanButton = styled.button`
   transition: var(--transition);
   width: 100%;
   max-width: 200px;
-  
+
   &:hover {
     background-color: var(--primary-color);
     color: white;

@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import styled from 'styled-components';
-import Hero from './components/Hero/Hero';
-import Services from './components/Services/Services';
-import Pricing from './components/Pricing/Pricing';
-import Contact from './components/Contact/Contact';
-import UserList from './components/UserList/UserList';
-import GlobalStyles from './styles/GlobalStyles';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import styled from "styled-components";
+import Hero from "./components/Hero/Hero";
+import Services from "./components/Services/Services";
+import Pricing from "./components/Pricing/Pricing";
+import Contact from "./components/Contact/Contact";
+import UserList from "./components/UserList/UserList";
+import GlobalStyles from "./styles/GlobalStyles";
 
 const App = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -19,18 +19,18 @@ const App = () => {
         setIsScrolled(false);
       }
     };
-    
-    window.addEventListener('scroll', handleScroll);
-    
+
+    window.addEventListener("scroll", handleScroll);
+
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  
+
   return (
     <BrowserRouter>
       <GlobalStyles />
-      <Header scrolled={isScrolled}>
+      <Header $scrolled={isScrolled}>
         <div className="container">
           <Logo>House Of Marktech</Logo>
           <Nav>
@@ -43,7 +43,6 @@ const App = () => {
           <CallToAction>Get Started</CallToAction>
         </div>
       </Header>
-
       <Main>
         <section id="home">
           <Hero />
@@ -53,7 +52,6 @@ const App = () => {
         <UserList />
         <Contact />
       </Main>
-
       <Footer>
         <div className="container">
           <FooterContent>
@@ -160,22 +158,22 @@ const App = () => {
 };
 
 const Header = styled.header`
-  position: fixed;
   top: 0;
+  position: fixed;
   left: 0;
   width: 100%;
   z-index: 1000;
-  background-color: ${(props) => (props.scrolled ? 'white' : 'transparent')};
-  box-shadow: ${(props) => (props.scrolled ? 'var(--box-shadow)' : 'none')};
+  background-color: ${(props) => (props.$scrolled ? "white" : "transparent")};
+  box-shadow: ${(props) => (props.$scrolled ? "var(--box-shadow)" : "none")};
   transition: var(--transition);
   padding: 1rem 0;
-  
+
   .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
-  
+
   @media (max-width: 768px) {
     padding: 0.5rem 0;
     background-color: white;
@@ -192,7 +190,7 @@ const Logo = styled.div`
 const Nav = styled.nav`
   display: flex;
   gap: 1.5rem;
-  
+
   @media (max-width: 768px) {
     display: none;
   }
@@ -202,7 +200,7 @@ const NavLink = styled.a`
   color: var(--text-color);
   font-weight: 500;
   transition: var(--transition);
-  
+
   &:hover {
     color: var(--primary-color);
   }
@@ -217,7 +215,7 @@ const CallToAction = styled.button`
   font-weight: 600;
   cursor: pointer;
   transition: var(--transition);
-  
+
   &:hover {
     background-color: var(--secondary-color);
   }
@@ -241,14 +239,15 @@ const FooterContent = styled.div`
 `;
 
 const FooterColumn = styled.div`
-  h3, h4 {
+  h3,
+  h4 {
     margin-bottom: 1.5rem;
     color: white;
     position: relative;
     display: inline-block;
-    
+
     &:after {
-      content: '';
+      content: "";
       position: absolute;
       left: 0;
       bottom: -8px;
@@ -257,7 +256,7 @@ const FooterColumn = styled.div`
       background-color: var(--primary-color);
     }
   }
-  
+
   p {
     margin-bottom: 1.5rem;
     color: #ccc;
@@ -267,21 +266,21 @@ const FooterColumn = styled.div`
 const FooterLinks = styled.ul`
   li {
     margin-bottom: 0.75rem;
-    
+
     a {
       color: #ccc;
       transition: var(--transition);
-      
+
       &:hover {
         color: var(--primary-color);
       }
     }
   }
-  
+
   &.horizontal {
     display: flex;
     gap: 1.5rem;
-    
+
     @media (max-width: 576px) {
       flex-direction: column;
       gap: 0.5rem;
@@ -303,11 +302,11 @@ const SocialLink = styled.a`
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
   transition: var(--transition);
-  
+
   span {
     font-size: 1.2rem;
   }
-  
+
   &:hover {
     background-color: var(--primary-color);
   }
@@ -320,7 +319,7 @@ const ContactInfo = styled.ul`
     gap: 1rem;
     margin-bottom: 1rem;
     color: #ccc;
-    
+
     span {
       font-size: 1.2rem;
     }
@@ -333,11 +332,11 @@ const FooterBottom = styled.div`
   align-items: center;
   padding-top: 2rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  
+
   p {
     color: #ccc;
   }
-  
+
   @media (max-width: 768px) {
     flex-direction: column;
     gap: 1rem;
@@ -345,4 +344,4 @@ const FooterBottom = styled.div`
   }
 `;
 
-export default App; 
+export default App;
